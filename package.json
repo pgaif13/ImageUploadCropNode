@@ -1,0 +1,26 @@
+{
+  "name": "PassPhotoUploadCrop",
+  "version": "0.1.0",
+  "author": "Gabriel Perez <pgaif13@yahoo.com>",
+  "description": "A sample application for image uploading and cropping. Used the Microsoft WebMatrix Team node.js Boilerplate Template as a starting point.",
+  "main": "./server.js",
+  "keywords": [
+    "gm",
+    "jade",
+    "express"
+  ],
+  "dependencies": {
+    "mocha": "*",
+    "chai": "*",
+    "sinon": "*",    
+    "jade": "*",
+	"request": "*",
+	"gm": "*",
+    "express": "~3.1.0"
+  },
+  "noAnalyze": true,
+  "license": "Apache",
+  "engines": {
+    "node": ">=0.6.14"
+  }  
+}

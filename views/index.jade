@@ -1,0 +1,53 @@
+extends layout
+
+block content
+ h1= title  
+
+ !='<br/>Select the image you want to upload <br/><br/>'
+ form(action="/photoupload", method="post", enctype="multipart/form-data")
+  input(id='targetfilename',type='hidden', value=targetfilename, name='targetfilename')
+  input(type="file", id="PassPhotoImageFileUpload", name="PassPhotoImage")
+  !='&nbsp;&nbsp;'
+  input(type="submit", value="Upload Image", name="UploadImageBtn", id="UploadImageBtn")
+  
+ !='<br/>'
+
+ p=msg
+
+ !='<br/>'
+ table
+  tr
+   td(style='width:400px')
+    if (imgurl!=='')
+     img(id='Image1', src=imgurl, width=prevwidth, height=prevheight)
+   td(style='width:300px')
+     #croppedpreview(style='width:'+cropprevieww+'px;height:'+croppreviewh+'px;overflow:hidden;background-color:#ffffff;display:'+displaypreview)
+      if (displaypreview == 'normal')
+       img(id='preview', src=imgurl, width=cropprevieww+'px', height=croppreviewh+'px')
+   
+ !='<br/>'
+ form(action="/photocrop", method="post", enctype="multipart/form-data")
+  input(id='X1value',type='hidden', name='X1value')
+  input(id='Y1value',type='hidden', name='Y1value')
+  input(id='X2value',type='hidden', name='X2value')
+  input(id='Y2value',type='hidden', name='Y2value')
+  input(id='Wvalue',type='hidden', name='Wvalue')
+  input(id='Hvalue',type='hidden', name='Hvalue')
+  input(id='filenamecrop',type='hidden', value=targetfilename, name='filenamecrop')
+  input(id='foldercrop',type='hidden', value=targetfolder, name='foldercrop')  
+  
+  !='&nbsp;&nbsp;'
+  if (displaypreview == 'normal')
+   #cropinstructions(style='width:600px;padding-bottom:5px')
+    !='Move or rearrange the selection tool inside the original image until the preview selection displays an image that you want to keep. When ready click the crop button and your selection will be saved permanently.'
+   input(type="submit", value="Crop Image", name="CropImageBtn", id="CropImageBtn")
+
+
+ script(type='text/javascript', src='/public/javascripts/jquery.min.js')
+ script(type='text/javascript', src='/public/javascripts/jquery.Jcrop.js')
+ script(type='text/javascript')=myjs
+
+ 
+
+    
+   
